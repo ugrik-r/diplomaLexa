@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>App</h1>
-    </div>
-  );
-}
+import { useRouter } from "../hooks/useRouter";
+import './app.styles.css';
 
-export default App;
+export const App = () => {
+  const router = useRouter();
+  return <div className="App">{router}</div>;
+};
