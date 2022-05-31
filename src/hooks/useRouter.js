@@ -4,7 +4,17 @@ import { Routes, Route } from "react-router";
 import { AdminRoute } from "../hoc/AdminRoute";
 import { WithoutAuth } from "../hoc/WithoutAuth";
 import { UserRoute } from "../hoc/UserRoute";
-import { LoginPage, AdminPage, UserPage, OrderWorkplace, RegistrationUser } from "../pages";
+import {
+  LoginPage,
+  AdminPage,
+  UserPage,
+  OrderWorkplace,
+  RegistrationUser,
+  Offices,
+  Users,
+  Floors,
+  Orders
+} from "../pages";
 
 export const useRouter = () => {
   const isAuth = useSelector((state) => state.redux.isAuth);
@@ -27,7 +37,39 @@ export const useRouter = () => {
           </AdminRoute>
         }
       />
-       <Route
+      <Route
+        path="/offices"
+        element={
+          <AdminRoute isAuth={isAuth} isRole={isRole}>
+            <Offices />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/floors"
+        element={
+          <AdminRoute isAuth={isAuth} isRole={isRole}>
+            <Floors />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/orders"
+        element={
+          <AdminRoute isAuth={isAuth} isRole={isRole}>
+            <Orders />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/users"
+        element={
+          <AdminRoute isAuth={isAuth} isRole={isRole}>
+            <Users />
+          </AdminRoute>
+        }
+      />
+      <Route
         path="/registration-user"
         element={
           <AdminRoute isAuth={isAuth} isRole={isRole}>

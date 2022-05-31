@@ -28,4 +28,8 @@ export const apiReq = {
       password,
       systemRoleId,
     }),
+  apiOffices: () => api.get("admin/offices"),
+  apiUsers: () => api.get("admin/users"),
+  apiFloors: () => api.get("floors"),
+  apiOrders: () => api.get("orders"),
 };

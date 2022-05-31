@@ -24,6 +24,7 @@ export const OrderWorkplace = () => {
     setOpen(false);
     dispatch(clearOrderStatus());
   };
+  console.log(workplaces[0].message);
   return (
     <div className="order__workplace">
       <ButtonLogout />
@@ -32,7 +33,7 @@ export const OrderWorkplace = () => {
           <p className="user__paragraph">{`Место номер: ${workplace.id}`}</p>
           <p className="user__paragraph">{`Этаж: ${workplace.floorId}`}</p>
           <p className="user__paragraph">{`Статус: ${
-            workplace.message === "Workplace is free" ? "Свободно" : "Занято"
+            workplace.message === "" ? "Свободно" : workplace.message
           }`}</p>
           <Button
             variant="contained"

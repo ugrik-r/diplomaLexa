@@ -15,6 +15,6 @@
   padding: 20px;
   width: 200px;
   background-color: #0083ff;
-  height: 200px;
+  height: auto;
   justify-content: center;
 }

@@ -9,6 +9,10 @@ const initialState = {
   workplaces: [],
   statusOrder: "",
   errors: "",
+  offices: [],
+  users: [],
+  floors: [],
+  orders: [],
   statusRegistration: "",
 };
 
@@ -30,6 +34,54 @@ export const fetchAllWorkplace = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiReq.apiGetWorkspace();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const fetchAllUsers = createAsyncThunk(
+  "users/all",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await apiReq.apiUsers();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const fetchAllFloors = createAsyncThunk(
+  "floors/all",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await apiReq.apiFloors();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const fetchAllOrders = createAsyncThunk(
+  "orders/all",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await apiReq.apiOrders();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const fetchAllOffices = createAsyncThunk(
+  "offices/all",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await apiReq.apiOffices();
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -126,6 +178,18 @@ const reduxSlice = createSlice({
     });
     builder.addCase(fetchRegistrationUser.fulfilled, (state) => {
       state.statusRegistration = "fulfilled";
+    });
+    builder.addCase(fetchAllOffices.fulfilled, (state, { payload }) => {
+      state.offices = payload;
+    });
+    builder.addCase(fetchAllUsers.fulfilled, (state, { payload }) => {
+      state.users = payload;
+    });
+    builder.addCase(fetchAllFloors.fulfilled, (state, { payload }) => {
+      state.floors = payload;
+    });
+    builder.addCase(fetchAllOrders.fulfilled, (state, { payload }) => {
+      state.orders = payload;
     });
   },
 });

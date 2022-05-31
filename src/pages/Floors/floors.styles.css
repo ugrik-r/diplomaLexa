@@ -1,0 +1,12 @@
+.floor__item {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 180px;
+  background-color: #8dcf4c;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 153px;
+  justify-content: center;
+  padding-left: 15px;
+}

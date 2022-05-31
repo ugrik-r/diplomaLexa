@@ -1,0 +1,20 @@
+.offices {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.office__item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  height: 200px;
+  width: 200px;
+  border-radius: 3px;
+  background-color: #2b98ff;
+}
