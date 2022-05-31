@@ -1,12 +1,14 @@
 import "./userPage.styles.css";
 import { useNavigate } from "react-router-dom";
 import userIcon from "../../assets/user-icon.svg";
+import { ButtonLogout } from "../../components/ButtonLogout/ButtonLogout";
 import workplaceIcon from "../../assets/workplace.svg";
 
 export const UserPage = () => {
   let navigate = useNavigate();
   return (
     <div className="user">
+      <ButtonLogout />
       <div className="user__info user__item">
         <img src={userIcon} alt="user" className="user-icon" />
         <p className="user__paragraph">Личный кабинет пользователя</p>

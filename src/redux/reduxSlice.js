@@ -8,6 +8,8 @@ const initialState = {
   isRole: localStorage.getItem("role"),
   workplaces: [],
   statusOrder: "",
+  errors: "",
+  statusRegistration: "",
 };
 
 export const fetchLoginUser = createAsyncThunk(
@@ -53,12 +55,42 @@ export const fetchCreateOrder = createAsyncThunk(
   }
 );
 
+export const fetchRegistrationUser = createAsyncThunk(
+  "admin/registration",
+  async (data, { rejectWithValue }) => {
+    const { name, surname, login, email, phone, password, systemRoleId } = data;
+    try {
+      const response = await apiReq.apiRegistration(
+        name,
+        surname,
+        login,
+        email,
+        phone,
+        password,
+        systemRoleId
+      );
+      return response.data;
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const reduxSlice = createSlice({
   name: "redux",
   initialState,
   reducers: {
     clearOrderStatus(state) {
       state.statusOrder = "";
+    },
+    clearRegistration(state) {
+      state.errors = "";
+      state.statusRegistration = "";
+    },
+    clearUser(state) {
+      state.isAuth = false;
+      state.isRole = "";
     },
   },
   extraReducers: (builder) => {
@@ -82,14 +114,22 @@ const reduxSlice = createSlice({
       state.status = "fulfilled";
       state.workplaces = payload;
     });
-    builder.addCase(fetchCreateOrder.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchCreateOrder.fulfilled, (state) => {
       state.statusOrder = "fulfilled";
     });
-    builder.addCase(fetchCreateOrder.rejected, (state, action) => {
+    builder.addCase(fetchCreateOrder.rejected, (state) => {
       state.statusOrder = "rejected";
+    });
+    builder.addCase(fetchRegistrationUser.rejected, (state, { payload }) => {
+      console.log(payload);
+      state.errors = payload.userMessage;
+    });
+    builder.addCase(fetchRegistrationUser.fulfilled, (state) => {
+      state.statusRegistration = "fulfilled";
     });
   },
 });
 
-export const { clearOrderStatus } = reduxSlice.actions;
+export const { clearOrderStatus, clearRegistration, clearUser } =
+  reduxSlice.actions;
 export default reduxSlice.reducer;

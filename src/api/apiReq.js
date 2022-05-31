@@ -9,5 +9,23 @@ export const apiReq = {
     }),
   apiGetWorkspace: () => api.get("workplaces"),
   apiPostOrder: (workplaceId, startDateTime, endDateTime) =>
-    api.post('orders', { workplaceId, startDateTime, endDateTime }),
+    api.post("orders", { workplaceId, startDateTime, endDateTime }),
+  apiRegistration: (
+    name,
+    surname,
+    login,
+    email,
+    phone,
+    password,
+    systemRoleId
+  ) =>
+    api.post("/admin/register", {
+      name,
+      surname,
+      login,
+      email,
+      phone,
+      password,
+      systemRoleId,
+    }),
 };

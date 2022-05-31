@@ -1,0 +1,12 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.errors_wrapper {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}

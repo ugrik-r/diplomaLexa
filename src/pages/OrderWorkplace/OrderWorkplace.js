@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllWorkplace } from "../../redux/reduxSlice";
 import { Button } from "@mui/material";
 import { clearOrderStatus } from "../../redux/reduxSlice";
+import { ButtonLogout } from "../../components/ButtonLogout/ButtonLogout";
 import { Modal } from "../../components/Modal/Modal";
 import "./orderWorkplace.css";
 
@@ -23,9 +24,9 @@ export const OrderWorkplace = () => {
     setOpen(false);
     dispatch(clearOrderStatus());
   };
-  console.log(workplaces);
   return (
     <div className="order__workplace">
+      <ButtonLogout />
       {workplaces?.map((workplace) => (
         <div className="workplace__item" key={workplace.id}>
           <p className="user__paragraph">{`Место номер: ${workplace.id}`}</p>
@@ -43,7 +44,9 @@ export const OrderWorkplace = () => {
           </Button>
         </div>
       ))}
-      {open && <Modal activeOrder={activeOrder} handleCloseModal={handleCloseModal} />}
+      {open && (
+        <Modal activeOrder={activeOrder} handleCloseModal={handleCloseModal} />
+      )}
     </div>
   );
 };
