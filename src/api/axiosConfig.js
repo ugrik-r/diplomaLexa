@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiAuth } from "./apiAuth";
+import { apiReq } from "./apiReq";
 
 const api = axios.create({
   withCredentials: true,
@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem("access")}`;
+  config.headers.Authorization = `${localStorage.getItem("token")}`;
   return config;
 });
 
@@ -24,8 +24,8 @@ api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        const response = await apiAuth.apiAuthRefreshToken();
-        localStorage.setItem("access", response.data.accessToken);
+        const response = await apiReq.apiAuthRefreshToken();
+        localStorage.setItem("token", response.data.accessToken);
         return api.request(originalRequest);
       } catch (e) {
         localStorage.clear();

@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router";
 import { AdminRoute } from "../hoc/AdminRoute";
 import { WithoutAuth } from "../hoc/WithoutAuth";
 import { UserRoute } from "../hoc/UserRoute";
-import { LoginPage, AdminPage, UserPage } from "../pages";
+import { LoginPage, AdminPage, UserPage, OrderWorkplace } from "../pages";
 
 export const useRouter = () => {
   const isAuth = useSelector((state) => state.redux.isAuth);
@@ -32,6 +32,14 @@ export const useRouter = () => {
         element={
           <UserRoute isAuth={isAuth} isRole={isRole}>
             <UserPage />
+          </UserRoute>
+        }
+      />
+      <Route
+        path="/order-workplace"
+        element={
+          <UserRoute isAuth={isAuth} isRole={isRole}>
+            <OrderWorkplace />
           </UserRoute>
         }
       />

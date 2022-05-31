@@ -1,0 +1,20 @@
+.order__workplace {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.workplace__item {
+  display: flex;
+  border-radius: 3px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: 200px;
+  background-color: #0083ff;
+  height: 200px;
+  justify-content: center;
+}

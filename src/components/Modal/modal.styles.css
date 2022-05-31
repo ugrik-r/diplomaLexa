@@ -1,0 +1,33 @@
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  background-color: #00f7ff;
+  position: fixed;
+  border-radius: 4px;
+  gap: 20px;
+  padding: 20px;
+}
+
+.modal__paragraph {
+  color: black;
+}
+
+.cancel {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: #000;
+}
